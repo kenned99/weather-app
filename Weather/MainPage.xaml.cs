@@ -24,7 +24,6 @@ namespace Weather
             try
             {
                 var location = await Geolocation.GetLastKnownLocationAsync();
-
                 if (location != null)
                 {
                     var data = await new API().GetWeatherForeCastAsync(
