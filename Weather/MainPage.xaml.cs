@@ -16,10 +16,10 @@ namespace Weather
         {
             InitializeComponent();
 
-            GetLOcation();
+            GetLocation();
         }
 
-        private async void GetLOcation() 
+        private async void GetLocation() 
         {
             try
             {

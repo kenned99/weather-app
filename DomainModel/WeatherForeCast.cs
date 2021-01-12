@@ -1,16 +1,32 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace DomainModel
 {
     public class WeatherForeCast
     {
-        [JsonPropertyName("type")]
-        public string Type { get; set; } 
+        [JsonProperty("lat")]
+        public double Lat { get; set; }
 
-        [JsonPropertyName("geometry")]
-        public Geometry Geometry { get; set; } 
+        [JsonProperty("lon")]
+        public double Lon { get; set; }
 
-        [JsonPropertyName("properties")]
-        public Properties Properties { get; set; } 
+        [JsonProperty("timezone")]
+        public string Timezone { get; set; }
+
+        [JsonProperty("timezone_offset")]
+        public int TimezoneOffset { get; set; }
+
+        [JsonProperty("current")]
+        public Current Current { get; set; }
+
+        [JsonProperty("minutely")]
+        public List<Minutely> Minutely { get; set; }
+
+        [JsonProperty("hourly")]
+        public List<Hourly> Hourly { get; set; }
+
+        [JsonProperty("daily")]
+        public List<Daily> Daily { get; set; }
     }
 }

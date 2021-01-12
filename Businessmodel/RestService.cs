@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -12,8 +13,6 @@ namespace BusinessModel
 
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Accept.ParseAdd("application/json");
-
                 HttpResponseMessage response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
