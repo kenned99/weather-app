@@ -28,5 +28,8 @@ namespace DomainModel
 
         [JsonProperty("daily")]
         public List<Daily> Daily { get; set; }
+
+        [JsonProperty("alerts")]
+        public List<Alerts> Alerts { get; set; }
     }
 }

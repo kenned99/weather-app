@@ -1,4 +1,5 @@
-using Newtonsoft.Json; 
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DomainModel
@@ -6,7 +7,8 @@ namespace DomainModel
     public class Daily
     {
         [JsonProperty("dt")]
-        public int Dt { get; set; } 
+        [JsonConverter(typeof(UTCDateTimeConverter))]
+        public DateTime Dt { get; set; } 
 
         [JsonProperty("sunrise")]
         public int Sunrise { get; set; } 
@@ -31,20 +33,29 @@ namespace DomainModel
 
         [JsonProperty("wind_speed")]
         public double WindSpeed { get; set; } 
+                
+        [JsonProperty("wind_gust")]
+        public double WindGust { get; set; }
 
         [JsonProperty("wind_deg")]
-        public int WindDeg { get; set; } 
-
-        [JsonProperty("weather")]
-        public List<Weather> Weather { get; set; } 
+        public int WindDeg { get; set; }
 
         [JsonProperty("clouds")]
         public int Clouds { get; set; } 
 
-        [JsonProperty("pop")]
-        public int Pop { get; set; } 
-
         [JsonProperty("uvi")]
-        public double Uvi { get; set; } 
+        public double Uvi { get; set; }
+
+        [JsonProperty("pop")]
+        public double Pop { get; set; } 
+
+        [JsonProperty("rain")]
+        public double Rain { get; set; }
+
+        [JsonProperty("snow")]
+        public double Snow { get; set; }
+
+        [JsonProperty("weather")]
+        public List<Weather> Weather { get; set; } 
     }
 }
