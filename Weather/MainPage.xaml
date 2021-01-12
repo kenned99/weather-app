@@ -1,24 +1,68 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Weather.MainPage">
+             x:Class="Weather.MainPage"
+             BackgroundColor="#1E201C">
 
+    <ContentPage.Resources>
+        <StyleSheet Source="/style.css"/>
+    </ContentPage.Resources>
+    <ScrollView>
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+        <Image Source="compass2.png" HorizontalOptions="EndAndExpand" Margin="10" HeightRequest="50"/>
+        <Label Text="Location" TextColor="#D9DDE8"  HorizontalOptions="CenterAndExpand" FontSize="30"/>
 
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+            <Label Text="x" FontSize="Header"  VerticalOptions="CenterAndExpand" TextColor="#D9DDE8" Margin="10" />
+            <Image Source="sol.png" HeightRequest="70" VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+
+        <Label Text="Status" TextColor="#D9DDE8" HorizontalOptions="CenterAndExpand" FontSize="25"/>
+        <Label Text="Sol" TextColor="#D9DDE8" HorizontalOptions="CenterAndExpand" FontSize="Large"/>
+
+
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+
+            
+            <Label class="pis" Text="1" Grid.Row="0" />
+            <Label class="pis" Text="2" Grid.Row="1" />
+            <Label class="pis" Text="3" Grid.Row="2"/>
+
+
+            <Label class="pis" Text="4" Grid.Column="1"/>
+            <Label class="pis" Text="5" Grid.Column="2"/>
+
+            <Label class="pis" Text="6" Grid.Column="1" Grid.Row="1"/>
+            <Label class="pis" Text="7" Grid.Column="2" Grid.Row="1"/>
+            <Label class="pis" Text="8" Grid.Column="1" Grid.Row="2"/>
+            <Label class="pis" Text="9" Grid.Column="2" Grid.Row="2"/>
+
+            <Label class="pis" Text="10" Grid.Column="0" Grid.Row="3"/>
+            <Label class="pis" Text="11" Grid.Column="1" Grid.Row="3"/>
+            <Label class="pis" Text="10" Grid.Column="2" Grid.Row="3"/>
+        </Grid>
+        
+        
+        <Label Text="Vind" HorizontalOptions="CenterAndExpand" TextColor="#D9DDE8" FontSize="30"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <Label Text="4 m/s" TextColor="#D9DDE8" FontSize="20"/>
+            <Image Source="wind.png" HeightRequest="20" />
+        </StackLayout>
+
+    </StackLayout>
+    </ScrollView>
 </ContentPage>
+    
