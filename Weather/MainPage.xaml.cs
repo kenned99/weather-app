@@ -37,6 +37,7 @@ namespace Weather
                         Longitude: location.Longitude,
                         Altitude: location.Altitude ?? 0);
 
+                    //Locate city and country
                     var placemark = (await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude))?.FirstOrDefault();
                     lblLocation.Text = $"{placemark?.Locality}, {placemark?.CountryName}";
 
