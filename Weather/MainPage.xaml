@@ -85,7 +85,7 @@
                             <Label
                                 FontSize="35"
                                 Grid.Column="0"
-                                TextColor="Yellow"
+                                TextColor="#D9DDE8"
                                 Text="{Binding DateTime, StringFormat='{0:ddd}'}" />
                             <Image
                                 Grid.Column="1"
@@ -96,7 +96,7 @@
                             <Label 
                                 FontSize="35"                                
                                 Grid.Column="2"
-                                TextColor="Yellow"
+                                TextColor="#D9DDE8"
                                 HorizontalTextAlignment="End"
                                 Text="{Binding Path=Temp.Day, StringFormat='{0:F1}°C'}" />
                         </Grid>
