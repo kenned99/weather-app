@@ -17,25 +17,25 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
-            <ImageButton
-                Grid.Row="0"
-                HeightRequest="50"
-                Source="compass2.png"
-                Clicked="ImageButton_Clicked" 
-                HorizontalOptions="EndAndExpand" />            
-            <Label 
-                Grid.Row="1"
-                FontSize="30"
-                x:Name="lblLocation" 
-                TextColor="#D9DDE8"  
-                HorizontalOptions="CenterAndExpand" />
+
+            <StackLayout Grid.Row="0" Orientation="Horizontal">
+                <Label
+                    FontSize="30"
+                    x:Name="lblLocation"
+                    TextColor="#D9DDE8"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
+                <ImageButton                
+                    HeightRequest="50"
+                    Source="compass2.png"
+                    Clicked="ImageButton_Clicked"
+                    HorizontalOptions="EndAndExpand" />
+            </StackLayout>
 
             <StackLayout 
-                Grid.Row="2"
+                Grid.Row="1"
                 BindingContext="{Binding Path=Current}">
                 <StackLayout                
                     Orientation="Horizontal" 
@@ -45,7 +45,7 @@
                         FontSize="60"
                         VerticalOptions="CenterAndExpand" 
                         TextColor="#D9DDE8" />
-                    <Image 
+                    <Image
                         Source="{Binding Path=Weather[0].Icon, Converter={StaticResource weatherIconNameToLocalName}}" 
                         VerticalOptions="CenterAndExpand" 
                         WidthRequest="100"
@@ -58,8 +58,8 @@
                     TextColor="#D9DDE8"
                     HorizontalOptions="CenterAndExpand"
                     Text="{Binding Path=Weather[0].Description, Converter={StaticResource firstLetterUppercase}}" />
-                <StackLayout                    
-                    Orientation="Horizontal" 
+                <StackLayout
+                    Orientation="Horizontal"
                     HorizontalOptions="CenterAndExpand">
                     <Label 
                         FontSize="20"
@@ -69,11 +69,16 @@
                 </StackLayout>                
             </StackLayout>
 
-            <StackLayout
-                Grid.Row="3"
-                VerticalOptions="Center"
-                BindableLayout.ItemsSource="{Binding Daily}">
-                <BindableLayout.ItemTemplate>
+            <CollectionView
+                Grid.Row="2"
+                Margin="0,20,0,0"
+                ItemsSource="{Binding Daily}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        Orientation="Vertical"
+                        ItemSpacing="20" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -82,27 +87,51 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Label
-                                FontSize="35"
-                                Grid.Column="0"
-                                TextColor="#D9DDE8"
-                                Text="{Binding DateTime, StringFormat='{0:ddd}'}" />
+                            <StackLayout Grid.Column="0">
+                                <Label
+                                    FontSize="20"                                    
+                                    TextColor="#D9DDE8"
+                                    Text="{Binding DateTime, StringFormat='{0:ddd, dd MMM}'}" />
+                                <Label
+                                    Margin="0,-5,0,0"
+                                    FontSize="15"
+                                    TextColor="#D9DDE8"
+                                    Text="{Binding Path=Weather[0].Description, Converter={StaticResource firstLetterUppercase}}" />                                
+                            </StackLayout>
                             <Image
                                 Grid.Column="1"
-                                HeightRequest="50"
-                                WidthRequest="30"
-                                Aspect="AspectFill"
+                                HeightRequest="10"
+                                WidthRequest="10"
+                                Aspect="AspectFit"
                                 Source="{Binding Path=Weather[0].Icon, Converter={StaticResource weatherIconNameToLocalName}}" />
-                            <Label 
-                                FontSize="35"
-                                Grid.Column="2"
-                                TextColor="#D9DDE8"
-                                HorizontalTextAlignment="End"
-                                Text="{Binding Path=Temp.Day, StringFormat='{0:F1}°C'}" />
+                            <StackLayout Grid.Column="2">
+                                <Label
+                                    FontSize="20"
+                                    TextColor="#D9DDE8">
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0:F0}° / {1:F0}°C">
+                                            <Binding Path="Temp.Day" />
+                                            <Binding Path="Temp.Night" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+                                <Label
+                                    Margin="0,-5,0,0"
+                                    FontSize="15"
+                                    TextColor="#D9DDE8">
+                                    <Label.Text>
+                                        <MultiBinding StringFormat="{}{0:F0}° / {1:F0}°C">
+                                            <Binding Path="FeelsLike.Day" />
+                                            <Binding Path="FeelsLike.Night" />
+                                        </MultiBinding>
+                                    </Label.Text>
+                                </Label>
+
+                            </StackLayout>
                         </Grid>
                     </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </StackLayout>            
+                </CollectionView.ItemTemplate>
+            </CollectionView>            
         </Grid>
     </ScrollView>
 </ContentPage>
