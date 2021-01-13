@@ -6,13 +6,13 @@ using Xamarin.Forms;
 
 namespace Weather.ValueConterters
 {
-    public class WeatherIconNameToLocalName : IValueConverter
+    public class GetWindDirection : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is string val && !string.IsNullOrWhiteSpace(val))
-                return $"icon_{val}.png";
-
+            if (value is int val)
+                return val + 135;
+            
             return value;
         }
 

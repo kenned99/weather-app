@@ -18,16 +18,21 @@ namespace Weather
         {
             InitializeComponent();
 
-            GetLocation();
+            refreshView.Command = new Command(GetLocation);
+
+            GetLocation();            
         }
 
-        private async void GetLocation() 
+        private async void GetLocation()
         {
             try
             {
                 var gpsDependencyService = DependencyService.Get<IGpsDependencyService>();
                 if (!gpsDependencyService.IsGpsEnable())
                     gpsDependencyService.OpenSettings();
+
+                // Start loadin icon
+                refreshView.IsRefreshing = true;
 
                 var location = await Geolocation.GetLocationAsync();
                 if (location != null)
@@ -41,7 +46,7 @@ namespace Weather
                     var placemark = (await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude))?.FirstOrDefault();
                     lblLocation.Text = $"{placemark?.Locality}, {placemark?.CountryName}";
 
-                    //data.Daily = data.Daily?.Skip(1).Take(5).ToList();
+                    // Remove curernt day
                     data.Daily.RemoveAt(0);
 
                     BindingContext = data;
@@ -63,11 +68,12 @@ namespace Weather
             {
                 // Unable to get location
             }
-        }
-
-        private void ImageButton_Clicked(object sender, EventArgs e)
-        {
-            GetLocation();
+            finally
+            {
+                // Stop loadin icon
+                refreshView.IsRefreshing = false;
+                content.IsVisible = true;
+            }
         }
     }
 }

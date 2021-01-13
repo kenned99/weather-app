@@ -10,12 +10,8 @@ namespace Weather.ValueConterters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is string)
-            {
-                string val = (value as string);
-                if (!string.IsNullOrWhiteSpace(val))
-                    return val[0].ToString().ToUpper() + val.Substring(1);                
-            }
+            if (value is string val && !string.IsNullOrWhiteSpace(val))
+                return val[0].ToString().ToUpper() + val.Substring(1);                
 
             return value;
         }
