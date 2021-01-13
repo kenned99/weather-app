@@ -21,7 +21,7 @@ namespace DomainModel
         public Temp Temp { get; set; } 
 
         [JsonProperty("feels_like")]
-        public FeelsLike FeelsLike { get; set; } 
+        public FeelsLike FeelsLike { get; set; }
 
         [JsonProperty("pressure")]
         public int Pressure { get; set; } 
@@ -42,13 +42,13 @@ namespace DomainModel
         public int WindDeg { get; set; }
 
         [JsonProperty("clouds")]
-        public int Clouds { get; set; } 
+        public int Clouds { get; set; }
 
         [JsonProperty("uvi")]
         public double Uvi { get; set; }
 
         [JsonProperty("pop")]
-        public double Pop { get; set; } 
+        public double Pop { get; set; }
 
         [JsonProperty("rain")]
         public double Rain { get; set; }
@@ -57,6 +57,6 @@ namespace DomainModel
         public double Snow { get; set; }
 
         [JsonProperty("weather")]
-        public List<Weather> Weather { get; set; } 
+        public List<Weather> Weather { get; set; }
     }
 }

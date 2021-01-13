@@ -126,7 +126,6 @@
                                         </MultiBinding>
                                     </Label.Text>
                                 </Label>
-
                             </StackLayout>
                         </Grid>
                     </DataTemplate>
