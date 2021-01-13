@@ -8,7 +8,7 @@ namespace DomainModel
     {
         [JsonProperty("dt")]
         [JsonConverter(typeof(UTCDateTimeConverter))]
-        public DateTime Dt { get; set; } 
+        public DateTime DateTime { get; set; } 
 
         [JsonProperty("sunrise")]
         public int Sunrise { get; set; } 

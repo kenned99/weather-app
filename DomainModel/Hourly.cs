@@ -1,4 +1,5 @@
-using Newtonsoft.Json; 
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DomainModel
@@ -6,7 +7,8 @@ namespace DomainModel
     public class Hourly
     {
         [JsonProperty("dt")]
-        public int Dt { get; set; } 
+        [JsonConverter(typeof(UTCDateTimeConverter))]
+        public DateTime DateTime { get; set; }
 
         [JsonProperty("temp")]
         public double Temp { get; set; } 

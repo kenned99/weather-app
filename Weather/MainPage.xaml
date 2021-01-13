@@ -86,7 +86,7 @@
                                 FontSize="35"
                                 Grid.Column="0"
                                 TextColor="Yellow"
-                                Text="{Binding Dt, StringFormat='{0:ddd}'}" />
+                                Text="{Binding DateTime, StringFormat='{0:ddd}'}" />
                             <Image
                                 Grid.Column="1"
                                 HeightRequest="50"
