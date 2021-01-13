@@ -26,7 +26,8 @@
                 HeightRequest="50"
                 Source="compass2.png"
                 Clicked="ImageButton_Clicked" 
-                HorizontalOptions="EndAndExpand" />            
+                HorizontalOptions="EndAndExpand" 
+                BackgroundColor="#1E201C"/>            
             <Label 
                 Grid.Row="1"
                 FontSize="30"
@@ -89,9 +90,8 @@
                                 Text="{Binding DateTime, StringFormat='{0:ddd}'}" />
                             <Image
                                 Grid.Column="1"
-                                HeightRequest="50"
-                                WidthRequest="30"
-                                Aspect="AspectFill"
+                                HeightRequest="30"
+                                WidthRequest="15"
                                 Source="{Binding Path=Weather[0].Icon, Converter={StaticResource weatherIconNameToLocalName}}" />
                             <Label 
                                 FontSize="35"
