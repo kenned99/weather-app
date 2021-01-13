@@ -91,10 +91,10 @@
                                 Grid.Column="1"
                                 HeightRequest="50"
                                 WidthRequest="30"
-                                Aspect="AspectFill"                                
+                                Aspect="AspectFill"
                                 Source="{Binding Path=Weather[0].Icon, Converter={StaticResource weatherIconNameToLocalName}}" />
                             <Label 
-                                FontSize="35"                                
+                                FontSize="35"
                                 Grid.Column="2"
                                 TextColor="Yellow"
                                 HorizontalTextAlignment="End"

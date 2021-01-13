@@ -1,6 +1,7 @@
+using System.Collections.Generic;
+using DomainModel.JsonConverters;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 
 namespace DomainModel
 {

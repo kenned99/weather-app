@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace DomainModel
+namespace DomainModel.JsonConverters
 {
     public class UTCDateTimeConverter : JsonConverter
     {
