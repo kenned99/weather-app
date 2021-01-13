@@ -31,7 +31,8 @@
                     HeightRequest="50"
                     Source="compass2.png"
                     Clicked="ImageButton_Clicked"
-                    HorizontalOptions="EndAndExpand" />
+                    HorizontalOptions="EndAndExpand"
+                    BackgroundColor="#1E201C"/>
             </StackLayout>
 
             <StackLayout 
@@ -48,8 +49,8 @@
                     <Image
                         Source="{Binding Path=Weather[0].Icon, Converter={StaticResource weatherIconNameToLocalName}}" 
                         VerticalOptions="CenterAndExpand" 
-                        WidthRequest="100"
-                        HeightRequest="100"
+                        WidthRequest="60"
+                        HeightRequest="60"
                         Aspect="AspectFill" />
                 </StackLayout>
                 <Label
@@ -100,9 +101,8 @@
                             </StackLayout>
                             <Image
                                 Grid.Column="1"
-                                HeightRequest="10"
-                                WidthRequest="10"
-                                Aspect="AspectFit"
+                                HeightRequest="30"
+                                WidthRequest="15"
                                 Source="{Binding Path=Weather[0].Icon, Converter={StaticResource weatherIconNameToLocalName}}" />
                             <StackLayout Grid.Column="2">
                                 <Label
