@@ -54,6 +54,6 @@ namespace DomainModel
         public Snow Snow { get; set; }
 
         [JsonProperty("weather")]
-        public List<Weather> Weather { get; set; } 
+        public List<Weather> Weather { get; set; }
     }
 }
