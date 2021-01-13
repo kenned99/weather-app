@@ -33,8 +33,8 @@ namespace Weather
                 if (location != null)
                 {
                     var data = await new API().GetWeatherForeCastAsync(
-                        Latitude: location.Latitude, 
-                        Longitude: location.Longitude, 
+                        Latitude: location.Latitude,
+                        Longitude: location.Longitude,
                         Altitude: location.Altitude ?? 0);
 
                     //Locate city and country

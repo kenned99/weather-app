@@ -1,4 +1,5 @@
-using Newtonsoft.Json; 
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace DomainModel
@@ -6,7 +7,8 @@ namespace DomainModel
     public class Current
     {
         [JsonProperty("dt")]
-        public int Dt { get; set; } 
+        [JsonConverter(typeof(UTCDateTimeConverter))]
+        public DateTime DateTime { get; set; }
 
         [JsonProperty("sunrise")]
         public int Sunrise { get; set; } 
@@ -54,6 +56,6 @@ namespace DomainModel
         public Snow Snow { get; set; }
 
         [JsonProperty("weather")]
-        public List<Weather> Weather { get; set; } 
+        public List<Weather> Weather { get; set; }
     }
 }
