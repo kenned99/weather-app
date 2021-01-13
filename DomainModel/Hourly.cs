@@ -33,15 +33,25 @@ namespace DomainModel
         public int Visibility { get; set; } 
 
         [JsonProperty("wind_speed")]
-        public double WindSpeed { get; set; } 
+        public double WindSpeed { get; set; }
+
+        [JsonProperty("wind_gust")]
+        public double WindGust { get; set; }
 
         [JsonProperty("wind_deg")]
-        public int WindDeg { get; set; } 
+        public int WindDeg { get; set; }
+
+        [JsonProperty("pop")]
+        public double Pop { get; set; } 
+
+        [JsonProperty("rain")]
+        public Rain Rain { get; set; }
+
+        [JsonProperty("snow")]
+        public Snow Snow { get; set; }
 
         [JsonProperty("weather")]
         public List<Weather> Weather { get; set; } 
 
-        [JsonProperty("pop")]
-        public int Pop { get; set; } 
     }
 }

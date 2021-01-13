@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Essentials;
 using BusinessModel;
+using Weather.Interfaces;
+using Weather.ValueConterters;
 
 namespace Weather
 {
@@ -23,13 +25,25 @@ namespace Weather
         {
             try
             {
-                var location = await Geolocation.GetLastKnownLocationAsync();
+                var gpsDependencyService = DependencyService.Get<IGpsDependencyService>();
+                if (!gpsDependencyService.IsGpsEnable())
+                    gpsDependencyService.OpenSettings();
+
+                var location = await Geolocation.GetLocationAsync();
                 if (location != null)
                 {
                     var data = await new API().GetWeatherForeCastAsync(
                         Latitude: location.Latitude, 
                         Longitude: location.Longitude, 
                         Altitude: location.Altitude ?? 0);
+
+                    var placemark = (await Geocoding.GetPlacemarksAsync(location.Latitude, location.Longitude))?.FirstOrDefault();
+                    lblLocation.Text = $"{placemark?.Locality}, {placemark?.CountryName}";
+
+                    //data.Daily = data.Daily?.Skip(1).Take(5).ToList();
+                    data.Daily.RemoveAt(0);
+
+                    BindingContext = data;
                 }
             }
             catch (FeatureNotSupportedException fnsEx)
@@ -48,6 +62,11 @@ namespace Weather
             {
                 // Unable to get location
             }
+        }
+
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+            GetLocation();
         }
     }
 }
