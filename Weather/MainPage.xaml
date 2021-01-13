@@ -24,7 +24,7 @@
             <ImageButton
                 Grid.Row="0"
                 HeightRequest="50"
-                Source="compass2.png" 
+                Source="compass2.png"
                 Clicked="ImageButton_Clicked" 
                 HorizontalOptions="EndAndExpand" />            
             <Label 

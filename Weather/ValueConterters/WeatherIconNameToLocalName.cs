@@ -14,7 +14,7 @@ namespace Weather.ValueConterters
             {
                 string val = (value as string);
                 if (!string.IsNullOrWhiteSpace(val))
-                    return $"https://openweathermap.org/img/wn/{val}@2x.png";
+                    return $"icon_{val}.png";
             }
 
             return value;
