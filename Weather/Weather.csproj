@@ -20,7 +20,22 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Layouts\HorizontalLayout.xaml.cs">
+      <DependentUpon>HorizontalLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\DailyView.xaml.cs">
+      <DependentUpon>DailyView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Layouts\VerticalLayout.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\CurrentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DailyView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

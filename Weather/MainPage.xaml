@@ -1,37 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:views="clr-namespace:Weather.Views"
              x:Class="Weather.MainPage"
              BackgroundColor="#1E201C">
     <RefreshView x:Name="refreshView">
-        <ScrollView x:Name="content" IsVisible="false">
-            <Grid Margin="20">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <Label
-                    Grid.Row="0"
-                    FontSize="30"
-                    x:Name="lblLocation"
-                    TextColor="#D9DDE8"
-                    HorizontalOptions="Center" />
-
-                
-                <views:CurrentView
-                        Grid.Row="1"
-                        HorizontalOptions="Center"
-                        BindingContext="{Binding Path=Current}" />
-
-                <views:DailyView
-                    Grid.Row="2"
-                    Margin="0,50,0,0"
-                    ItemsSource="{Binding Path=Daily}" />
-            </Grid>
-        </ScrollView>
+        <ScrollView x:Name="content" IsVisible="false" />
     </RefreshView>
 </ContentPage>
-    
