@@ -10,11 +10,15 @@ namespace Weather.Layouts
         {
             InitializeComponent();
 
-            dataContext.PropertyChanged += (object sender, System.ComponentModel.PropertyChangedEventArgs e) =>
-            {
-                lblLocation.Text = dataContext.Location;
-                BindingContext = dataContext.WeatherForeCast;
-            };
+            UpdateContext(dataContext);
+
+            dataContext.PropertyChanged += (object sender, System.ComponentModel.PropertyChangedEventArgs e) => UpdateContext(dataContext);
+        }
+
+        private void UpdateContext(DataContext dataContext)
+        {
+            lblLocation.Text = dataContext.Location;
+            BindingContext = dataContext.WeatherForeCast;
         }
     }
 }
