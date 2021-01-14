@@ -20,7 +20,6 @@
                     TextColor="#D9DDE8"
                     HorizontalOptions="Center" />
 
-                
                 <views:CurrentView
                         Grid.Row="1"
                         HorizontalOptions="Center"
