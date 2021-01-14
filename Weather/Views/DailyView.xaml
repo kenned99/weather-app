@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<CollectionView
+            xmlns="http://xamarin.com/schemas/2014/forms" 
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:valueConterters="clr-namespace:Weather.ValueConterters"
+            x:Class="Weather.Views.DailyView">
+    <CollectionView.Resources>
+        <ResourceDictionary>
+            <valueConterters:FirstLetterUppercase x:Key="firstLetterUppercase" />
+            <valueConterters:WeatherIconNameToLocalName x:Key="weatherIconNameToLocalName" />
+        </ResourceDictionary>
+    </CollectionView.Resources>
+
+    <CollectionView.ItemsLayout>
+        <LinearItemsLayout Orientation="Vertical" ItemSpacing="20" />
+    </CollectionView.ItemsLayout>
+
+    <CollectionView.ItemTemplate>
+        <DataTemplate>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!--    Left    -->
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    FontSize="20"                                   
+                    TextColor="#D9DDE8"
+                    Text="{Binding DateTime, StringFormat='{0:ddd, dd MMM}'}" />
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    FontSize="15"
+                    TextColor="#D9DDE8"
+                    Text="{Binding Path=Weather[0].Description, Converter={StaticResource firstLetterUppercase}}" />
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    FontSize="15"
+                    TextColor="#D9DDE8" 
+                    Text="Wind" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    FontSize="15"
+                    TextColor="#D9DDE8" 
+                    Text="Feels like" />
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    FontSize="15"
+                    TextColor="#D9DDE8" 
+                    Text="Rain" />
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="0"
+                    FontSize="15"
+                    TextColor="#D9DDE8" 
+                    Text="Probability" />
+
+                <!--    Center    -->
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontSize="20"
+                    TextColor="#D9DDE8">
+                    <Label.Text>
+                        <MultiBinding StringFormat="{}{0:F0}° / {1:F0}°C">
+                            <Binding Path="Temp.Day" />
+                            <Binding Path="Temp.Night" />
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    FontSize="15"
+                    TextColor="#D9DDE8" 
+                    Text="{Binding WindSpeed, StringFormat='{0:F0} m/s'}" />
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    FontSize="15"
+                    TextColor="#D9DDE8">
+                    <Label.Text>
+                        <MultiBinding StringFormat="{}{0:F0}° / {1:F0}°C">
+                            <Binding Path="FeelsLike.Day" />
+                            <Binding Path="FeelsLike.Night" />
+                        </MultiBinding>
+                    </Label.Text>
+                </Label>
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    FontSize="15"
+                    TextColor="#D9DDE8" 
+                    Text="{Binding Rain.Amount, StringFormat='{0} mm', FallbackValue='0 mm'}" />
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    FontSize="15"
+                    TextColor="#D9DDE8" 
+                    Text="{Binding Pop, StringFormat='{0}%'}" />
+
+                <!--    Right    -->
+                <Image
+                    Grid.Column="2"
+                    Grid.Row="0"
+                    Grid.RowSpan="6"
+                    HeightRequest="60"
+                    VerticalOptions="Center"
+                    Source="{Binding Path=Weather[0].Icon, Converter={StaticResource weatherIconNameToLocalName}}" />
+            </Grid>
+        </DataTemplate>
+    </CollectionView.ItemTemplate>
+</CollectionView>
