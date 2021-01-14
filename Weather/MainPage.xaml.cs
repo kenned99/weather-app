@@ -50,6 +50,8 @@ namespace Weather
                     data.Daily.RemoveAt(0);
 
                     BindingContext = data;
+
+                    content.IsVisible = true;
                 }
             }
             catch (FeatureNotSupportedException fnsEx)
@@ -71,8 +73,7 @@ namespace Weather
             finally
             {
                 // Stop loadin icon
-                refreshView.IsRefreshing = false;
-                content.IsVisible = true;
+                refreshView.IsRefreshing = false;                
             }
         }
     }
