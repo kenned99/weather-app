@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Weather.Views"
+    x:Class="Weather.Layouts.HorizontalLayout"
+    Margin="20">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="*" />
+        <ColumnDefinition Width="*"/>
+    </Grid.ColumnDefinitions>
+
+    <Label
+        Grid.Row="0"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        FontSize="30"
+        x:Name="lblLocation"
+        TextColor="#D9DDE8"
+        HorizontalOptions="Center" />
+
+    <views:CurrentView
+        Grid.Row="1"
+        Grid.Column="0"        
+        BindingContext="{Binding Path=Current}" />
+
+    <views:DailyView
+        Grid.Row="1"
+        Grid.Column="1"
+        Margin="50,0,0,0"
+        ItemsSource="{Binding Path=Daily}" />
+</Grid>
