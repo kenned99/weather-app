@@ -50,7 +50,7 @@
                         Grid.Column="0">
                         <Label
                             Text="{Binding Path=Temp, StringFormat='{0:F0}°C'}" 
-                            FontSize="90"
+                            FontSize="70"
                             TextColor="#D9DDE8" />
                         <Label
                             Text="{Binding Path=FeelsLike, StringFormat='Feels like {0:F0}°C'}" 
