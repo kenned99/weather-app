@@ -28,8 +28,8 @@
         Grid.Row="0"
         Grid.Column="0">
         <Label
-            Text="{Binding Path=Temp, StringFormat='{0:F0}°C'}" 
-            FontSize="90"
+            Text="{Binding Path=Temp, StringFormat='{0:F0}°'}" 
+            FontSize="70"
             TextColor="#D9DDE8" />
         <Label
             Text="{Binding Path=FeelsLike, StringFormat='Feels like {0:F0}°C'}" 
@@ -62,8 +62,8 @@
     <Image
         Grid.Row="0"
         Grid.Column="2"
-        WidthRequest="60"
-        HeightRequest="60"
+        WidthRequest="45"
+        HeightRequest="45"
         Aspect="AspectFit"
         Source="{Binding Path=Weather[0].Icon, Converter={StaticResource weatherIconNameToLocalName}}" />
     <StackLayout
