@@ -46,7 +46,7 @@
                 TextColor="#D9DDE8" 
                 Text="{Binding Path=WindSpeed, StringFormat='{0:F0} m/s'}" />
             <Image 
-                Source="compass2.png"
+                Source="compass.png"
                 Aspect="AspectFit"
                 HeightRequest="25"
                 Rotation="{Binding Path=WindDeg, Converter={StaticResource getWindDirection}}" />
